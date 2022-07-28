@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  app_server:
+    image: node:lts-gallium
+    user: node
+    working_dir: /home/node/app
+    volumes:
+      - ./:/app
+    container_name: appserver
+    command: "npm run install-start"
+    ports:
+      - 3000:3000
+    environment:
+      - DB
+      - PORT
+      - REGION
+      - USERPOOL
+      - CLIENTID
